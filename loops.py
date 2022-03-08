@@ -26,3 +26,15 @@ while n != 1:
         n = n * 3 + 1
 print(n)
 
+code = 2242
+N = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+for c1 in N:
+    for c2 in N:
+        for c3 in N:
+            for c4 in N:
+                tentative = c1 * 1000 + c2 * 100 + c3 * 10 + c4
+                if tentative == code:
+                    print("Trouvé !", tentative)
+                    quit()
+                else:
+                    print('Dommage...', tentative)
