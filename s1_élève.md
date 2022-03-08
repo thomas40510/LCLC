@@ -1,7 +1,8 @@
 % LCLC séance 1
 % guilers
+% Mardi 8 mars 2022
 
-# Opérateurs
+# 0. Prise en main
 Entrer chaque ligne dans la console Python. Regarder le résultat.
 ```python
 # opérations de base
@@ -42,16 +43,16 @@ print(L[0])
 
 # If then else
 ## 1. Majeur / Mineur
-On demande à l'utilisateur son âge, et on dit s'il est majeur ou mineur.
+Écrire un script Python qui demande son âge à l'utilisateur et lui dit s'il est majeur ou mineur.
 
 ## 2. Nombres pairs
 Écrire un script Python qui, pour un nombre ```n``` choisi, dit s'il est pair ou impair.
 
-# Boucles for
+# Boucles ```for```
 ## 1. somme des entiers
 Écrire un script Python qui donne la somme des nombres entiers de 1 à 20.
 
-Existe-t-il un moyen plus simple de programmer cette somme ?
+Existe-t-il un moyen plus simple de programmer cette somme ? (_indice : utiliser une boucle_)
 
 
 ## 2. Tables de multiplication
@@ -60,7 +61,7 @@ Existe-t-il un moyen plus simple de programmer cette somme ?
 
 Comment le programmer plus simplement ?
 
-# Boucles while
+# Boucles ```while```
 
 ## 1. Quotient d'une division
 Écrire un script Python qui, à l'aide d'une boucle ```while```, calcule pour deux nombres ```a``` et ```b``` le quotient de la division de ```a``` par ```b```.
