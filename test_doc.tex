@@ -1,0 +1,130 @@
+\documentclass[12pt,a4paper, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{indentfirst}
+\usepackage{eurosym}
+\usepackage{multicol}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{array}
+\usepackage{stmaryrd}
+
+
+\usepackage[notitlepage,, fancysections, pagenumber]{sauveterre}
+\pagestyle{empty}
+
+\usepackage{titlesec}
+\titleformat*{\section}{\centering\Large\bfseries}
+\titleformat*{\subsection}{\large\bfseries}
+\titleformat*{\subsubsection}{\centering\normalsize\bfseries}
+%\titlespacing*{\subsubsection}{0pt}{0pt}{\baselineskip}
+%\titleformat*{\paragraph}{\bfseries\itshape}
+
+\renewcommand{\thesection}{--- \Roman{section} ---}
+
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{Partie \Roman{subsubsection}}
+
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usepackage{tkz-graph}
+
+%load tikz libraries
+\usepackage{tkz-euclide}
+\usepackage{listings}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc,patterns,shapes.geometric}
+
+
+%change sec and subsec numbering
+%\renewcommand{\thesection}{\Roman{section}.}
+%\renewcommand{\thesubsection}{\arabic{subsection}.}
+
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{\alph{enumii})}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rb}{\overline{\mathbb{R}}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\epsi}{\varepsilon}
+\renewcommand{\parallel}{//}
+\newcommand{\Cf}{\mathcal{C}_f}
+
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\MnR}{\M_n(\R)}
+
+\newcommand{\ch}{\operatorname{ch}}
+\newcommand{\sh}{\operatorname{sh}}
+
+\renewcommand{\Re}[1]{\operatorname{Re}\left(#1\right)}
+\renewcommand{\Im}[1]{\operatorname{Im}\left(#1\right)}
+
+\newcommand{\zb}{\overline{z}}
+\newcommand{\conj}[1]{\overline{#1}}
+\renewcommand{\mod}[1]{\lvert #1 \rvert}
+\newcommand{\scal}{\cdot}
+\newcommand{\abs}[1]{\mod{#1}}
+
+\renewcommand{\sup}[2]{\underset{#2}{\operatorname{sup}}~#1}
+
+
+\newcommand{\mat}[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+% command for vectors / choice btw overrightarrow and vec
+\makeatletter
+\newcommand{\ve}{\@ifstar{\@veca}{\@vecb}}
+\newcommand{\@veca}[1]{\vec{#1}}
+\newcommand{\@vecb}[1]{\overrightarrow{#1}}
+\makeatother
+
+\newcommand{\Nr}[1]{\lVert #1 \rVert}
+\newcommand{\Nrsup}[1]{\lVert #1 \rVert_{\infty}}
+
+
+\newcommand{\Oij}{\left(O~;~\vec{i},~\vec{j}\right)}
+\newcommand{\Oijk}{\left(O~;~\vec{i},~\vec{j},~\vec{k}\right)}
+\newcommand{\Ouv}{\left(O~;~\vec{u},~\vec{v}\right)}
+
+\newcommand{\cm}{\, \mathrm{cm}}
+\newcommand{\g}{\, \mathrm{g}}
+\newcommand{\eur}{\, \text{\euro}}
+\newcommand{\gpL}{\, \mathrm{g}\cdot \mathrm{L}^{-1}}
+
+\newcommand{\staritem}{\stepcounter{enumi} \item[$\star$ \labelenumi]}
+\newcommand{\stariitem}{\stepcounter{enumii} \item[$\star$ \labelenumii]}
+
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\renewcommand{\polylogohori}{img/ENSTA-LogoH-NOIR}
+\renewcommand{\polylogovert}{img/nologo}
+\renewcommand{\polyarmes}{img/nologo}
+
+\usepackage{scratch3}
+
+\usepackage{xcolor}
+\definecolor{bleu-sauveterre}{RGB}{237,107,97} %bleu ENSTA
+
+\usepackage{pythontex}
+
+\title[LCLC -- Séance 1]{\og L Codent L Créent \fg{}}
+\subtitle{Séance 1}
+\author{C. Hinard, M. Miallier, \\T. Prévost}
+\date{Collège Croas ar Pennoc,\\ \today}
+
+\begin{document}
+
+\begin{scratch}[scale=1]
+  \blockinit{Quand \greenflag est cliqué}
+  \blockpen{effacer tout}
+  \blocksound{jouer le son \ovalsound*{Meow}}
+  \blockmove{ajouter \ovalnum{5} à \ovalvariable{abscisse}}
+\end{scratch}
+
+\end{document}
