@@ -1,0 +1,400 @@
+\documentclass[12pt,a4paper, oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{indentfirst}
+\usepackage{eurosym}
+\usepackage{multicol}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{array}
+\usepackage{stmaryrd}
+
+
+\usepackage[notitlepage, fancysections, pagenumber]{sauveterre}
+\pagestyle{empty}
+
+\usepackage{titlesec}
+\titleformat{\section}{\centering\Large\bfseries\sffamily}{\LARGE\normalfont{\textbf{\thesection}}}{0em}{\\}
+\titleformat*{\subsection}{\large\bfseries}
+\titleformat*{\subsubsection}{\normalsize\bfseries}
+%\titlespacing*{\subsubsection}{0pt}{0pt}{\baselineskip}
+%\titleformat*{\paragraph}{\bfseries\itshape}
+
+\renewcommand{\thesection}{\Roman{section}}
+
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{Partie \Roman{subsubsection}}
+
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usepackage{tkz-graph}
+
+%load tikz libraries
+\usepackage{tkz-euclide}
+\usepackage{listings}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc,patterns,shapes.geometric}
+
+
+%change sec and subsec numbering
+%\renewcommand{\thesection}{\Roman{section}.}
+%\renewcommand{\thesubsection}{\arabic{subsection}.}
+
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{\alph{enumii})}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rb}{\overline{\mathbb{R}}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\epsi}{\varepsilon}
+\renewcommand{\parallel}{//}
+\newcommand{\Cf}{\mathcal{C}_f}
+
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\MnR}{\M_n(\R)}
+
+\newcommand{\ch}{\operatorname{ch}}
+\newcommand{\sh}{\operatorname{sh}}
+
+\renewcommand{\Re}[1]{\operatorname{Re}\left(#1\right)}
+\renewcommand{\Im}[1]{\operatorname{Im}\left(#1\right)}
+
+\newcommand{\zb}{\overline{z}}
+\newcommand{\conj}[1]{\overline{#1}}
+\renewcommand{\mod}[1]{\lvert #1 \rvert}
+\newcommand{\scal}{\cdot}
+\newcommand{\abs}[1]{\mod{#1}}
+
+\renewcommand{\sup}[2]{\underset{#2}{\operatorname{sup}}~#1}
+
+
+\newcommand{\mat}[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+% command for vectors / choice btw overrightarrow and vec
+\makeatletter
+\newcommand{\ve}{\@ifstar{\@veca}{\@vecb}}
+\newcommand{\@veca}[1]{\vec{#1}}
+\newcommand{\@vecb}[1]{\overrightarrow{#1}}
+\makeatother
+
+\newcommand{\Nr}[1]{\lVert #1 \rVert}
+\newcommand{\Nrsup}[1]{\lVert #1 \rVert_{\infty}}
+
+
+\newcommand{\Oij}{\left(O~;~\vec{i},~\vec{j}\right)}
+\newcommand{\Oijk}{\left(O~;~\vec{i},~\vec{j},~\vec{k}\right)}
+\newcommand{\Ouv}{\left(O~;~\vec{u},~\vec{v}\right)}
+
+\newcommand{\cm}{\, \mathrm{cm}}
+\newcommand{\g}{\, \mathrm{g}}
+\newcommand{\eur}{\, \text{\euro}}
+\newcommand{\gpL}{\, \mathrm{g}\cdot \mathrm{L}^{-1}}
+
+\newcommand{\staritem}{\stepcounter{enumi} \item[$\star$ \labelenumi]}
+\newcommand{\stariitem}{\stepcounter{enumii} \item[$\star$ \labelenumii]}
+
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\renewcommand{\polylogohori}{../img/ENSTA-LogoH-NOIR}
+\renewcommand{\polylogovert}{../img/nologo}
+\renewcommand{\polyarmes}{../img/nologo}
+
+\usepackage{scratch3}
+
+\usepackage{xcolor}
+\definecolor{bleu-sauveterre}{RGB}{237,107,97} %bleu ENSTA
+
+\usepackage{pythontex}
+
+\title[LCLC -- Séance 2 (et 3 ?)]{\og L Codent L Créent \fg{}}
+\subtitle{Séance 2 (et 3 ?)}
+\author{C. Hinard, M. Miallier, \\T. Prévost}
+\date{Collège Croas ar Pennoc,\\ \today}
+
+\begin{document}
+
+\maketitle
+
+  \section{Rétrospective : On a appris quoi la dernière fois ?}\label{sec:rétrospective-:-on-a-appris-quoi-la-dernière-fois-?}
+   On sait, la dernière fois remonte déjà à un bon moment qui, dans la rapidité de l'instant couplée aux enjeux qui sont ceux de la classe de troisième (coucou le brevet !), on a l'impression que c'était il y a une éternité\dots
+  Mais pas de panique, on va refaire un tour de ce qui a été vu, jusque-là, comme ça on pourra repartir sur de bonnes bases !
+
+   \subsection{Notre ami Python}\label{subsec:notre-ami-python}
+      Python est \og un langage de programmation interprété, multi-paradigme et multiplateformes~[\dots] doté d'un typage dynamique fort \fg{}\footnote{Merci Wikipédia !}.
+
+      Mais concrètement, si on oublie les définitions longues et compliquées (moyennement intéressantes, on va se l'avouer\dots), Python est un langage informatique, autrement dit une manière de parler à un ordinateur afin de lui demander toutes sortes de choses (et c'est incroyable le nombre de choses que l'ordinateur sait faire).
+
+       Surtout, Python a le gros avantage de pouvoir être écrit mais surtout compris assez simplement, en étant assez proche du langage naturel, mais aussi celui de reconnaître tout seul le type d'une variable (c'est ça le typage dynamique\footnote{vous pouvez le ressortir pour vous la péter en soirée}).
+
+   \subsection{Les bases}\label{subsec:les-bases}
+      On dispose d'un bon nombre d'opérations de base en Python.
+      À commencer par les 4 opérations de base :
+      \begin{center}
+         \begin{tabular}{|c|c|c|c|}
+           \hline
+           \textbf{Opération} & \textbf{Symbole} & \textbf{Exemple} & \textbf{Résultat de l'exemple} \\
+           \hline
+            \texttt{addition} & \texttt{+} & \texttt{5 + 2} &  \\
+           \hline
+            \texttt{soustraction} & \texttt{-} & \texttt{5 - 2} & \\
+           \hline
+            \texttt{multiplication} & \texttt{*} & \texttt{5 * 2} & \\
+           \hline
+            \texttt{division} & \texttt{/} & \texttt{5 / 2} & \\
+           \hline
+         \end{tabular}
+      \end{center}
+
+      Mais on a aussi une palanquée d'autres opérations dans notre inventaire :
+      \begin{center}
+      \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Opération} & \textbf{Symbole} & \textbf{Exemple} & \textbf{Résultat de l'exemple} \\
+        \hline
+         \texttt{reste de la division} & \texttt{\%} & \texttt{5 \% 2} & \\
+        \hline
+         \texttt{puissance} & \texttt{**} & \texttt{5 ** 2} & \\
+        \hline
+         \texttt{division entière} & \texttt{//} & \texttt{5 // 2} & \\
+        \hline
+         \texttt{inférieur} & \texttt{<} & \texttt{5 < 2} & \\
+        \hline
+         \texttt{supérieur} & \texttt{>} & \texttt{5 > 2} & \\
+        \hline
+         \texttt{inférieur ou égal} & \texttt{<=} & \texttt{5 <= 2} & \\
+        \hline
+         \texttt{supérieur ou égal} & \texttt{>=} & \texttt{5 >= 2} & \\
+        \hline
+         \texttt{égalité} & \texttt{==} & \texttt{5 == 2} & \\
+        \hline
+         \texttt{différence} & \texttt{!=} & \texttt{5 != 2} & \\
+        \hline
+         \texttt{et} & \texttt{and} & \texttt{5 and 2} & \\
+        \hline
+         \texttt{ou} & \texttt{or} & \texttt{5 or 2} & \\
+        \hline
+         \texttt{non} & \texttt{not} & \texttt{5 not 2} & \\
+        \hline
+      \end{tabular}
+      \end{center}
+
+
+
+   \subsection{\texttt{If, then, else}}
+   \begin{minipage}{.4\textwidth}
+    \begin{pyverbatim}
+      age = input("Quel est votre âge ?")
+      if int(age) < 18:
+        print("Mineur !")
+      else:
+        print("Mineur !")
+    \end{pyverbatim}
+   \end{minipage}
+   \hfill\begin{minipage}{.4\textwidth}
+     \begin{center}
+       \begin{scratch}[scale=.8]
+         \blockinit{Quand \greenflag est cliqué}
+         \blocksensing{demander \ovalnum{Quel est votre âge ?} et attendre}
+         \blockifelse{
+          si \booloperator{\ovalsensing{réponse} < \ovalnum{18}}
+         }{
+         \blocklook{Penser à \ovalnum{Vous êtes mineur.}}
+         }{
+         \blocklook{Penser à \ovalnum{Vous êtes majeur !}}
+         }
+       \end{scratch}
+     \end{center}
+   \end{minipage}
+
+\section{Et aujourd'hui, commence par quoi ?} \label{sec:et-aujourd'hui-on-fait-quoi-?}
+   \subsection{Boucle \texttt{for}}\label{subsec:boucle-texttt-for}
+   \begin{enumerate}
+      \item Compléter le programme Python ci-dessous permettant de calculer la somme des nombres de 1 à 20 :
+         \begin{pyverbatim}
+           somme = ...
+           for i in range(1, ...):
+             somme = ...
+           print(somme)
+        \end{pyverbatim}
+      \item De la même manière, écrire un programme Python qui affiche la table de multiplication de 5.
+   \end{enumerate}
+
+   \subsection{Boucle \texttt{while}}\label{subsec:boucle-texttt-while}
+      \begin{enumerate}
+         \item Compléter le programme Python ci-dessous permettant de trouver à partir de quel nombre la somme des entiers dépasse 1000 :
+            \begin{pyverbatim}
+              somme = ...
+              i = ...
+              while somme < ...:
+                somme = ...
+                i = ...
+              print(...)
+            \end{pyverbatim}
+         \item On souhaite calculer manuellement le quotient d'une division entre deux nombres \texttt{a} et \texttt{b}.
+         Compléter le programme Python permettant de le faire :
+            \begin{pyverbatim}
+              a = ...
+              b = ...
+              quotient = ...
+              while ...:
+                quotient = ...
+                ...
+              print(...)
+            \end{pyverbatim}
+         \item Un avion, initialement à une vitesse de $180$ nautiques, accélère à chaque seconde de $10$ nautiques.
+         Écrire un programme Python qui calcule le temps nécessaire pour que l'avion atteigne sa vitesse de croisière de $340$ nautiques.
+      \end{enumerate}
+
+\section{Mais ensuite ?}\label{sec:mais-ensuite-?}
+   \subsection{Fonctions}\label{subsec:fonctions}
+   Tout comme en maths, il est possible de définir des fonctions en Python.
+   Contrairement à un programme tel qu'on a pu en écrire, une fonction est un morceau de code que l'on écrit une seule fois et qui peut être réutilisé à l'infini.
+   Généralement, une fonction prend une variable en entrée, et lui fait subir une suite d'opérations avant de donner un résultat, mais il existe aussi des fonctions (en vrai dans ce cas là on les appelle méthodes) qui ne renvoient rien.
+
+   Par exemple, la fonction $f:x\mapsto 2x$ s'écrit en python :
+   \begin{pyverbatim}
+     def f(x):
+       return 2*x
+   \end{pyverbatim}
+
+   À noter qu'une fonction Python peut recevoir une infinité de variables en entrée (comme en maths), de tous types.
+      Par exemple, la fonction Python correspondant au calcul de ${f : x\mapsto ax+b}$, avec $a$ et $b$ choisis par l'utilisateur, s'écrit :
+   \begin{pyverbatim}
+     def f(x, a, b):
+       return a * x + b
+   \end{pyverbatim}
+      
+      Une fois la fonction écrite, il suffit de l'appeler avec les arguments qu'on veut pour obtenir le résultat.
+      Par exemple, écrire \texttt{f(3, 2, 1)} dans un programme Python ou la console donnera le résultat $7$ (car $2\times 3 + 1 = 7$).
+   
+   \subsubsection*{À vous !}
+   \begin{enumerate}
+      \item Compléter la fonction Python ci-dessous qui calcule la somme des nombres de 1 à $n$ :
+         \begin{pyverbatim}
+           def somme(n):
+             somme = ...
+             for i in range(1, ...):
+               somme = ...
+             return somme
+         \end{pyverbatim}
+      Appeler \texttt{somme(10)}.
+      Que se passe-t-il ?
+      Appeler alors \texttt{print(somme(10))}.
+      Est-ce que ça marche ?
+      \item Recopier le code suivant, l'exécuter, et voir ce qu'il se passe :
+         \begin{pyverbatim}
+            def double(x):
+               print(2 * x)
+            x = double(3)
+            print(x)
+         \end{pyverbatim}
+      Quelle modification lui apporter pour qu'elle fonctionne ?
+      \item Compléter la fonction Python ci-dessous qui prend en entrée une liste de nombres et qui renvoie uniquement les nombres pairs de cette liste :
+         \begin{pyverbatim}
+            def nombres_pairs(liste):
+                liste_pairs = ...
+                for nombre in ...:
+                    if nombre ...:
+                        liste_pairs.append(nombre)
+                return ...
+         \end{pyverbatim}
+      \item Écrire une fonction Python \texttt{premiere\_derniere\_lettre(mot)}qui prend en entrée une chaîne de caractères, et qui renvoie uniquement sa première et dernière lettre.
+      Par exemple, \texttt{premiere\_derniere\_lettre("bonjour")} donnera \texttt{"b...r"}.
+   \end{enumerate}
+
+\section{Et maintenant, on dessine !}\label{sec:et-maintenant-on-dessine-!}
+   \subsection{Présentation du module \texttt{turtle}}\label{subsec:présentation-du-module-texttt-turtle}
+   
+   \subsection{À vous !}\label{subsec:à-vous-!}
+   
+\newpage
+
+\section{Quelques exercices pour occuper votre temps libre}\label{sec:quelques-exercices-pour-occuper-votre-temps-libre}
+   On propose une liste d'exercices de programmation de différentes difficultés, permettant de combler vos éventuelles heures de permanence (ou votre temps libre à la maison).
+   De nombreux éditeurs Python existent en ligne, vous permettant d'écrire votre code et de le faire tourner.
+
+   Plus un exercice comporte d'étoiles, plus il est difficile \footnote{toutes proportions gardées bien sûr, ils sont tous faisables !}.
+
+   À vos claviers !
+
+   \subsection{Table de 12}\label{subsec:table-de-12}
+   Proposer un programme Python qui affiche la table de multiplication de 12.
+
+   \subsection{Table de $n$}\label{subsec:table-de-n}
+   Écrire une fonction Python qui prend en entrée un entier $n$, et qui affiche sa table de multiplication.
+
+      (\textit{Indice : la fonction ne renvoie rien, elle affiche elle-même la table ligne par ligne}).
+
+   \subsection{Le juste prix $\star$}\label{subsec:le-juste-prix}
+   On souhaite écrire en Python un jeu du juste prix.
+   Les règles sont les suivantes :
+   \begin{itemize}
+      \item Un premier joueur choisit un nombre entre 1 et 100 ;
+      \item Le second joueur doit deviner ce nombre.
+      Pour cela, il fait une proposition à chaque tour :
+      \begin{itemize}
+         \item Si le nombre qu'il propose est plus petit que le nombre choisi, programme lui indique qu'il est en-dessous,
+         \item Si le nombre qu'il propose est plus grand que le nombre choisi, programme lui indique qu'il est au-dessus,
+         \item Si le nombre qu'il propose est égal au nombre choisi, le jeu est terminé ;
+      \end{itemize}
+      \item Si le joueur ne trouve pas le nombre au bout de 10 essais, il a perdu.
+   \end{itemize}
+
+   \begin{enumerate}
+      \item Écrire une fonction Python \texttt{situe\_nombre(n, p)} qui situe un nombre $p$ proposé par rapport au nombre $n$ choisi.
+      Il renverra soit \texttt{plus petit} si $p$ est plus petit que $n$, soit \texttt{plus grand} si $p$ est plus grand que $n$, soit \texttt{juste} si $p$ est égal à $n$.
+      \item Proposer une boucle permettant de jouer jusqu'à ce que le joueur dépasse le nombre d'essais maximum.
+      \item Compléter alors, grâce aux questions précédentes, la fonction \texttt{juste\_prix(n)} permettant de jouer au juste prix à partir d'un nombre $n$ proposé par le premier joueur :
+      \begin{pyverbatim}
+         n = int(input(...))
+         def juste_prix(n):
+            nombre_choisi = ...
+            nombre_propose = ...
+            essai = ...
+            while ... and essai <= 10:
+               print(situe_nombre(...))
+               essai = ...
+               nombre_propose = ...
+            if essai > 10:
+               print(...)
+            else:
+               print("Gagné !")
+            print("Partie terminée.")
+      \end{pyverbatim}
+   \end{enumerate}
+
+   \subsection{Trouveur de code}\label{subsec:trouveur-de-code}
+   On souhaite écrire une fonction Python permettant de trouver un code à 4 chiffres.
+   Pour cela, ce programe essaiera toutes les combinaisons possibles jusqu'à trouver la bonne.
+   \begin{enumerate}
+      \item Proposer une manière de générer une seule combinaison de 4 chiffres à partir d'opérations élémentaires (\texttt{+}, \texttt{*}).
+      \item Proposer une manière de parcourir tous les nombres de 0 à 9.
+      \item En déduire un empilement de boucles permettant de parcourir toutes les combinaisons à 4 chiffres, de \texttt{0000} à \texttt{9999}.
+      \item Finalement, combiner tout ça dans une fonction \texttt{trouve\_code(n)} qui, à partir d'un code $n$ à 4 chiffres, essaie toutes les combinaisons jusqu'à trouver le bon code.
+      Elle renverra la combinaison qu'elle a trouvée.
+      Vérifier alors si cette combinaison correspond bien au code de départ.
+      \item Pour les matheuses : combien de combinaisons possibles pour un code à 4 chiffres ?
+      À 6 chiffres ?
+      S'il faut une seconde pour essayer 10 combinaisons, combien de temps faut-il au plus pour trouver le code à 4 chiffres d'un iPhone ?
+      Même question pour un code à 6 chiffres.
+      Conclure.
+   \end{enumerate}
+
+%   \begin{pyverbatim}
+%      def situe_nombre(n, p):
+%         if n > p:
+%            return "plus petit"
+%         elif n < p:
+%            return "plus grand"
+%         else:
+%            return "juste"
+%   \end{pyverbatim}
+
+\end{document}
