@@ -1,5 +1,12 @@
-/out/s1_doc.aux
-/out/s1_doc.log
-/out/s1_doc.pyg
-/out/s1_doc.pytxcode
-/out/s1_doc.synctex.gz
+# ignore latex aux
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.brf
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.pytxcode
