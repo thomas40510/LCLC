@@ -13,6 +13,7 @@
 \usepackage{lmodern}
 \usepackage{array}
 \usepackage{stmaryrd}
+\usepackage{amsthm}
 
 
 \usepackage[notitlepage, fancysections, pagenumber]{sauveterre}
@@ -39,6 +40,13 @@
 \usepackage{listings}
 \usetikzlibrary{arrows}
 \usetikzlibrary{calc,patterns,shapes.geometric}
+
+\usepackage{framed}
+\usepackage[framemethod=tikz]{mdframed}
+
+\theoremstyle{definition}
+\newtheorem{defi}{Définition}
+\surroundwithmdframed[backgroundcolor=lightgray]{defi}
 
 
 %change sec and subsec numbering
@@ -190,11 +198,11 @@
    \subsection{\texttt{If, then, else}}
    \begin{minipage}{.4\textwidth}
     \begin{pyverbatim}
-      age = input("Quel est votre âge ?")
-      if int(age) < 18:
-        print("Mineur !")
-      else:
-        print("Mineur !")
+   age = input("Quel est votre âge ?")
+   if int(age) < 18:
+     print("Mineur !")
+   else:
+     print("Mineur !")
     \end{pyverbatim}
    \end{minipage}
    \hfill\begin{minipage}{.4\textwidth}
@@ -216,6 +224,24 @@
 \section{Et aujourd'hui, commence par quoi ?} \label{sec:et-aujourd'hui-on-fait-quoi-?}
    \subsection{Boucle \texttt{for}}\label{subsec:boucle-texttt-for}
    \begin{enumerate}
+      \item Recopier les programmes ci-dessous et les faire tourner.
+      Que remarque-t-on ?
+
+      \begin{minipage}{.4\textwidth}
+        \begin{pyverbatim}
+      for i in range(1, 10):
+         print(i)
+        \end{pyverbatim}
+        \end{minipage}
+      \begin{minipage}{.4\textwidth}
+         \begin{pyverbatim}
+      for i in range(10):
+         print(i)
+         \end{pyverbatim}
+        \end{minipage}
+
+      \newpage
+
       \item Compléter le programme Python ci-dessous permettant de calculer la somme des nombres de 1 à 20 :
          \begin{pyverbatim}
            somme = ...
@@ -228,6 +254,31 @@
 
    \subsection{Boucle \texttt{while}}\label{subsec:boucle-texttt-while}
       \begin{enumerate}
+         \item Faire tourner les programmes suivants, et observer le résultat :
+
+         \begin{minipage}{.3\textwidth}
+           \begin{pyverbatim}
+    i = 0
+    while i != 10:
+      print(i)
+      i = i + 1
+           \end{pyverbatim}
+        \end{minipage}
+         \begin{minipage}{.3\textwidth}
+            \begin{pyverbatim}
+    i = 0
+    while i < 10:
+      print(i)
+      i = i + 1
+           \end{pyverbatim}
+        \end{minipage}
+         \begin{minipage}{.3\textwidth}
+            \begin{pyverbatim}
+     i = 0
+     while i < 10:
+       print(i)
+            \end{pyverbatim}
+         \end{minipage}
          \item Compléter le programme Python ci-dessous permettant de trouver à partir de quel nombre la somme des entiers dépasse 1000 :
             \begin{pyverbatim}
               somme = ...
@@ -237,26 +288,18 @@
                 i = ...
               print(...)
             \end{pyverbatim}
-         \item On souhaite calculer manuellement le quotient d'une division entre deux nombres \texttt{a} et \texttt{b}.
-         Compléter le programme Python permettant de le faire :
-            \begin{pyverbatim}
-              a = ...
-              b = ...
-              quotient = ...
-              while ...:
-                quotient = ...
-                ...
-              print(...)
-            \end{pyverbatim}
-         \item Un avion, initialement à une vitesse de $180$ nautiques, accélère à chaque seconde de $10$ nautiques.
-         Écrire un programme Python qui calcule le temps nécessaire pour que l'avion atteigne sa vitesse de croisière de $340$ nautiques.
+
+         \item Un avion, initialement à une vitesse de $180$ n\oe uds, accélère à chaque seconde de $10$ n\oe uds.
+         Écrire un programme Python qui calcule le temps nécessaire pour que l'avion atteigne sa vitesse de croisière de $340$ n\oe uds.
       \end{enumerate}
 
 \section{Mais ensuite ?}\label{sec:mais-ensuite-?}
    \subsection{Fonctions}\label{subsec:fonctions}
    Tout comme en maths, il est possible de définir des fonctions en Python.
    Contrairement à un programme tel qu'on a pu en écrire, une fonction est un morceau de code que l'on écrit une seule fois et qui peut être réutilisé à l'infini.
-   Généralement, une fonction prend une variable en entrée, et lui fait subir une suite d'opérations avant de donner un résultat, mais il existe aussi des fonctions (en vrai dans ce cas là on les appelle méthodes) qui ne renvoient rien.
+   Généralement, une fonction prend une variable en entrée, et lui fait subir une suite d'opérations avant de donner un résultat, mais il existe aussi des fonctions qui ne prennent rien en entrée, ou ne renvoient rien en sortie.
+
+   \newpage
 
    Par exemple, la fonction $f:x\mapsto 2x$ s'écrit en python :
    \begin{pyverbatim}
@@ -370,7 +413,7 @@
       \end{pyverbatim}
    \end{enumerate}
 
-   \subsection{Trouveur de code}\label{subsec:trouveur-de-code}
+   \subsection{Trouveur de code $\star$}\label{subsec:trouveur-de-code}
    On souhaite écrire une fonction Python permettant de trouver un code à 4 chiffres.
    Pour cela, ce programe essaiera toutes les combinaisons possibles jusqu'à trouver la bonne.
    \begin{enumerate}
@@ -387,6 +430,81 @@
       Conclure.
    \end{enumerate}
 
+   \subsection{Nombres premiers $\star\star$}\label{subsec:nombres-premiers}
+   On souhaite écrire une fonction Python qui donne la liste de tous les nombres premiers inférieurs à un certain nombre.
+   Pour cela, on se souvient qu'un nombre premier est un entier $n > 1$ ayant pour seuls diviseurs lui-même et $1$.
+   Par exemple, $3$ est premier car il n'a que $1$ et $3$ comme diviseurs, tandis que $4$ ne l'est pas car il a $1$, $2$ et $4$ comme diviseurs.
+
+   \begin{enumerate}
+      \item Rappeler une manière en Python de parcourir tous les nombres de 1 à $n$.
+      \item On rappelle qu'un entier $n$ est divisible par $k \leq n$ si le reste de la division entière de $n$ par $k$ est égal à 0.
+      Rappeler comment accéder à ce résultat avec Python.
+      \item Écrire alors une fonction \texttt{est\_premier(n)} qui renverra \texttt{True} si $n$ est premier, \texttt{False} sinon.
+      \item Compléter alors la fonction \texttt{premiers(n)} qui renvoie la liste des nombres premiers inférieurs à $n$ :
+      \begin{pyverbatim}
+         def premiers(n):
+            liste = ...
+            for ...:
+               if est_premier(...):
+                  liste.append(...)
+            return ...
+      \end{pyverbatim}
+   \end{enumerate}
+
+   \subsection{Les pyramides $\star\star$}\label{subsec:pyramides}
+   On souhaite écrire une fonction Python \texttt{pyramide(n)} qui, à partir d'un entier $n$, renvoie la pyramide de nombres de hauteur $n$.
+   Par exemple, \texttt{pyramide(5)} renverra la pydamide suivante :
+   \begin{pyverbatim}
+      1
+      1 2
+      1 2 3
+      1 2 3 4
+      1 2 3 4 5
+   \end{pyverbatim}
+   Proposer une solution pour la fonction \texttt{pyramide(n)} en utilisant deux boucles imbriquées.
+
+   \subsection{Les pyramides, le retour $\star\star\star$}\label{subsec:pyramides-retour}
+   De la même manière que pour la pyramide simple, proposer une fonction \texttt{pyramide\_retour(n)} qui, à partir d'un entier $n$, renvoie une pyramide de hauteur $n$, qui monte puis redescend.
+   Par exemple, \texttt{pyramide\_retour(5)} renverra la pydamide suivante :
+   \begin{pyverbatim}
+      1
+      1 2
+      1 2 3
+      1 2 3 4
+      1 2 3 4 5
+      1 2 3 4
+      1 2 3
+      1 2
+      1
+   \end{pyverbatim}
+
+   \subsection{Si on dessinait ?}\label{subsec:si-on-dessinait-?}
+      On souhaite, à l'aide du module turtle, dessiner la figure suivante (ou au moine une qui lui ressemble) :
+   \begin{center}
+      \begin{tikzpicture}[scale=2]
+         \draw (0,0) -- (2, 0) -- (.4,-1) -- (1,.5) -- (1.6,-1) -- (0,0);
+      \end{tikzpicture}
+   \end{center}
+   
+   \subsection{Hexagone}\label{subsec:hexagone}
+   Proposer un programme Python qui, grâce au module \texttt{turtle}, dessine un hexagone de taille quelconque comme celui-ci :
+   \begin{center}
+      \begin{tikzpicture}
+         \draw (0,0) -- (1,0) -- (1.5,1) -- (1,2) -- (0,2) -- (-.5,1) -- (0,0);
+      \end{tikzpicture}
+   \end{center}
+
+   \subsection{Maison}
+   Dessiner, grâce au module \texttt{turtle}, une maison qui ressemble (plus ou moins) à celle-ci :
+   \begin{center}
+      \begin{tikzpicture}
+         \draw (0,0) rectangle (2,2);
+         \draw (0,2) -- (1, 3) -- (2,2);
+         \draw (.3,0) rectangle (.8,.9);
+      \end{tikzpicture}
+   \end{center}
+   On pourra également lui ajouter une cheminée (et pourquoi pas une fenêtre) ?
+   
 %   \begin{pyverbatim}
 %      def situe_nombre(n, p):
 %         if n > p:
