@@ -13,7 +13,7 @@ t.penup() #lever le stylo
 t.backward(50)#reculer de 50
 t.pendown() #reposer le stylo
 t.circle(30) #tracer un cercle de rayon 30
-t.dot(12,'red') #tracer un point rouge de diamètre &é
+t.dot(12,'red') #tracer un point rouge de diamètre 12
 t.penup()
 t.setpos((0,0))
 

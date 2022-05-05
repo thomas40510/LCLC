@@ -1,12 +1,13 @@
 import turtle as t
 
+# t.speed(0)
+# t.hideturtle()
+t.shape("turtle")
+# t.setx(0)
+# t.sety(0)
+
 
 def exo1():
-    t.speed(0)
-    t.hideturtle()
-    t.setx(0)
-    t.sety(0)
-
     # 1- Des petites commandes pour tester les fonct de turtle
     t.forward(60)  # aller tout droit de 60
     t.left(45)  # tourner à gauche de 45 degrés

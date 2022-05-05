@@ -184,11 +184,9 @@
         \hline
          \texttt{différence} & \texttt{!=} & \texttt{5 != 2} & \\
         \hline
-         \texttt{et} & \texttt{and} & \texttt{5 and 2} & \\
+         \texttt{et} & \texttt{and} & \texttt{5==5 and 2==3} & \\
         \hline
-         \texttt{ou} & \texttt{or} & \texttt{5 or 2} & \\
-        \hline
-         \texttt{non} & \texttt{not} & \texttt{5 not 2} & \\
+         \texttt{ou} & \texttt{or} & \texttt{5==5 or 2==3} & \\
         \hline
       \end{tabular}
       \end{center}
@@ -357,8 +355,121 @@
 
 \section{Et maintenant, on dessine !}\label{sec:et-maintenant-on-dessine-!}
    \subsection{Présentation du module \texttt{turtle}}\label{subsec:présentation-du-module-texttt-turtle}
+      Le module \texttt{turtle} est un module de Python qui permet de dessiner toutes sortes de figures, de manière simple : vous créez une \og tortue \fg{}, et ensuite vous lui dictez ce qu'elle doit faire.
+
+      Parmi ce que cette tortue est capable de faire, on a les instructions principales :
+      \begin{itemize}
+         \item \texttt{forward(x)} pour avancer d'une distance \texttt{x} (en pixels) ;
+         \item \texttt{backward(x)} pour reculer d'une distance \texttt{x} (en pixels) ;
+         \item \texttt{left(a)} pour tourner à gauche d'un angle \texttt{a} (en degrés) ;
+         \item \texttt{right(a)} pour tourner à droite d'un angle \texttt{a} (en degrés) ;
+         \item \texttt{setpos(x, y)} pour déplacer la tortue à la position (\texttt{x}, \texttt{y}) ;
+         \item \texttt{penup()} pour lever le crayon (se déplacer sans écrire) ;
+         \item \texttt{pendown()} pour baisser le crayon (recommencer à écrire en se déplaçant).
+      \end{itemize}
+
+      On va donc commencer en créant un nouveau fichier \texttt{hello\_turtle.py}.
+
+      Ceci étant fait, on peut se mettre à dessiner !
+      \begin{enumerate}
+         \item Dans le fichier que vous avez créé, entrer les instructions suivantes :
+         \begin{pyverbatim}
+            import turtle as t
+
+            t.shape("turtle")
+            t.exitonclick()
+         \end{pyverbatim}
+         \item On va commencer par aller en ligne droite.
+         Pour cela, taper \texttt{t.forward}
+         \item On continue en tournant d'un angle de 45 degrés vers la gauche : \texttt{t.left(45)}
+         \item Continuer dans la même lancée, en écrivant les lignes demandant à la tortue d'avancer de 30 avant de tourner à droite de 120 degrés.
+         \item Comme notre tortue a plus d'un tour dans son sac, non seulement elle sait de déplacer en ligne droite et tourner, mais elle sait aussi faire des cercles !
+         Pour cela, taper l'instruction \texttt{t.circle(30)}.
+         Quel est le rayon du cercle alors dessiné ?
+         \item Pour finir, ajouter au programme les lignes suivantes :
+         \begin{pyverbatim}
+            t.penup()
+            t.backward(50)
+            t.pendown()
+            t.dot(12,'red')
+            t.penup()
+            t.setpos((0,0))
+         \end{pyverbatim}
+         Que font-elles ?
+      \end{enumerate}
    
    \subsection{À vous !}\label{subsec:à-vous-!}
+      Maintenant, c'est à vous de jouer !
+      Pour ne pas que ce qu'on a déjà écrit nous dérange, on va créer un nouveau fichier \texttt{exos\_turtle.py}, et ne pas oublier d'écrire, au début du fichier, \texttt{import turtle as t} puis \texttt{t.shape("turtle")}.
+
+      \begin{enumerate}
+         \item On va commencer en douceur.
+         Compléter la fonction \texttt{carre(x)} qui dessine un carré de côté \texttt{x} :
+         \begin{pyverbatim}
+      def carre(x):
+         t.pendown()
+         for ... in range(4):
+            t.forward(...)
+            t.left(...)
+         t.penup()
+         \end{pyverbatim}
+         \item On va maintenant dessiner, grâce à une fonction \texttt{maison()}, une petite maison, dont les dimensions sont les suivantes :
+         \begin{center}
+            \begin{tikzpicture}[scale=.3]
+               \draw[thick] (0,0) rectangle (8,8);
+               \draw[thick] (2.5,0) rectangle ++(3,3);
+               \draw[thick] (8,8) -- ++(120:8) -- (0,8);
+               \draw[|<->|] (-.5,0) -- (-.5,8) node[midway, left] {$80$};
+               \draw[|<->|] (0,-.5) -- ++(2.5,0) node[midway, below] {$25$};
+               \draw[|<->|] (2.5,3.5) -- ++(3,0) node[midway, above] {$30$};
+               \draw[|<->|] (8.25,8.25) --++(120:7.75)
+                                 node[midway, right]{$8$};
+            \end{tikzpicture}
+         \end{center}
+         Pour cela, compléter le code Python suivant :
+            \begin{pyverbatim}
+      def maison():
+         # murs de la maison
+         carre(...)
+
+         # on va à l'emplacement de la porte
+         t.forward(...)
+
+         # on dessine la porte
+         carre(...)
+
+         # on va à la position du début du toit
+         t.forward(...)
+         t.left(90)
+         t.forward(...)
+
+         # on dessine le toit
+         t.pendown()
+         t.left(...)
+         t.forward(...)
+         t.left(...)
+         t.forward(...)
+         t.penup()
+         t.home()
+      maison()
+            \end{pyverbatim}
+         \item Maintenant que nous savons dessiner une maison, il est temps de dessiner un village !
+         Compléter alors le code suivant permettant de dessiner un village composé de \texttt{nb\_maisons}
+      \begin{pyverbatim}
+      def village(nb_maisons):
+         x, y = 0, 0
+         t.home()  # on revient à la position (0,0)
+         for ... in range(...):
+            # on dessine une maison
+            ...
+
+            # on décale la tortue de façon à ce que les
+            # maisons ne soient pas trop proches
+            ...
+      \end{pyverbatim}
+         Essayer ce code en choisissant le nombre de maisons que vous voulez.
+      \end{enumerate}
+
    
 \newpage
 
@@ -493,7 +604,8 @@
    Proposer un programme Python qui, grâce au module \texttt{turtle}, dessine un hexagone de taille quelconque comme celui-ci :
    \begin{center}
       \begin{tikzpicture}
-         \draw (0,0) -- (1,0) -- (1.5,1) -- (1,2) -- (0,2) -- (-.5,1) -- (0,0);
+         \draw (0:2) -- (60:2) -- (120:2) -- (180:2)
+               -- (240:2) -- (300:2) -- (0:2);
       \end{tikzpicture}
    \end{center}
 
