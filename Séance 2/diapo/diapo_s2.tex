@@ -1,0 +1,166 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[french]{babel}
+
+\usetheme{Boadilla}
+\usecolortheme{beaver}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title %optional
+{L Codent L Créent}
+
+\subtitle{Séance 2}
+
+\author[ENSTA Bretagne] % (optional)
+{C. \textsc{Hinard} \and M. \textsc{Miallier} \and T. \textsc{Prévost}}
+
+\institute[] % (optional)
+{
+  ENSTA Bretagne
+  \and
+  Collège Croas Ar'Pennoc
+}
+
+\date[Séance 2] % (optional)
+{10 mai 2022}
+
+%\logo{\includegraphics[height=1cm]{overleaf-logo}}
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the
+%beginning of each section and highlights the current section:
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Plan}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+
+%---------------------------------------------------------
+%The next statement creates the table of contents.
+\begin{frame}
+\frametitle{Plan}
+\tableofcontents
+\end{frame}
+%---------------------------------------------------------
+
+
+\section{Rappels}\label{sec:rappels}
+   \subsection{Opérations}\label{subsec:operations}
+
+%---------------------------------------------------------
+%Changing visibility of the text
+\begin{frame}
+\frametitle{Les bases}
+
+\begin{itemize}
+    \item<1-> \texttt{5 + 2} $\Longrightarrow$ \pause \texttt{7} \pause
+    \item<2-> \texttt{5 - 2} $\Longrightarrow$ \pause \texttt{3} \pause
+    \item<3-> \texttt{5 * 2} $\Longrightarrow$ \pause \texttt{10} \pause
+    \item<4-> \texttt{5 / 2} $\Longrightarrow$ \pause \texttt{2.5}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Mais aussi\dots}
+
+\begin{itemize}%python arithmetics
+   \item<1-> \texttt{5 \% 2} $\Longrightarrow$ \pause \texttt{7} \pause
+   \item<2-> \texttt{5 ** 2} $\Longrightarrow$ \pause \texttt{25} \pause
+   \item<3-> \texttt{5 // 2} $\Longrightarrow$ \pause \texttt{2} \pause
+   \item<4-> \texttt{5 < 2} $\Longrightarrow$ \pause \texttt{True} \pause
+   \item<5-> \texttt{5 > 2} $\Longrightarrow$ \pause \texttt{False} \pause
+   \item<6-> \texttt{5 <= 2} $\Longrightarrow$ \pause \texttt{True} \pause
+   \item<7-> \texttt{5 >= 2} $\Longrightarrow$ \pause \texttt{False} \pause
+   \item<8-> \texttt{5 == 2} $\Longrightarrow$ \pause \texttt{False} \pause
+   \item<9-> \texttt{5 != 2} $\Longrightarrow$ \pause \texttt{True} \pause
+\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------
+
+
+%---------------------------------------------------------
+%Example of the \pause command
+\begin{frame}
+In this slide \pause
+
+the text will be partially visible \pause
+
+And finally everything will be there
+\end{frame}
+%---------------------------------------------------------
+
+\section{Second section}
+
+%---------------------------------------------------------
+%Highlighting text
+\begin{frame}
+\frametitle{Sample frame title}
+
+In this slide, some important text will be
+\alert{highlighted} because it's important.
+Please, don't abuse it.
+
+\begin{block}{Remark}
+Sample text
+\end{block}
+
+\begin{alertblock}{Important theorem}
+Sample text in red box
+\end{alertblock}
+
+\begin{examples}
+Sample text in green box. The title of the block is ``Examples".
+\end{examples}
+\end{frame}
+%---------------------------------------------------------
+
+
+%---------------------------------------------------------
+%Two columns
+\begin{frame}
+\frametitle{Two-column slide}
+
+\begin{columns}
+
+\column{0.5\textwidth}
+This is a text in first column.
+$$E=mc^2$$
+\begin{itemize}
+\item First item
+\item Second item
+\end{itemize}
+
+\column{0.5\textwidth}
+This text will be in the second column
+and on a second tought this is a nice looking
+layout in some cases.
+\end{columns}
+\end{frame}
+%---------------------------------------------------------
+
+
+\end{document}
