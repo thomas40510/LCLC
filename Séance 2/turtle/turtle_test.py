@@ -1,8 +1,10 @@
 import turtle as t
 
-# t.speed(0)
+t.speed(0)
 # t.hideturtle()
 t.shape("turtle")
+
+
 # t.setx(0)
 # t.sety(0)
 
@@ -22,10 +24,10 @@ def exo1():
     t.setpos((0, 0))
 
 
-def exo2():
+def carre(x):
     # 2 Essayez de tracer un carré de 40x40
     for i in range(4):
-        t.forward(40)
+        t.forward(x)
         t.left(90)
 
 
@@ -36,6 +38,7 @@ def exo2():
 
 def maison():
     # tout d'abord, le carré qui compose les murs
+    t.pendown()
     for i in range(4):
         t.forward(80)
         t.left(90)
@@ -79,7 +82,18 @@ def village(nb_maisons):
             (x, 0))  # on décale la tortue de façon à ce que la maison suivante soit dessinée à côté de la précédente
 
 
-maison()
+def cercles():
+    t.penup()
+    t.setpos(0, -200)
+    for i in range(0, 361, 5):
+        t.pendown()
+        t.circle(80)
+        t.penup()
+        t.circle(200, i)
+
+
+# maison()
 # village(2)
+cercles()
 
 t.exitonclick()

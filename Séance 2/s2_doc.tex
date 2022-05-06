@@ -423,7 +423,7 @@
                \draw[|<->|] (0,-.5) -- ++(2.5,0) node[midway, below] {$25$};
                \draw[|<->|] (2.5,3.5) -- ++(3,0) node[midway, above] {$30$};
                \draw[|<->|] (8.25,8.25) --++(120:7.75)
-                                 node[midway, right]{$8$};
+                                 node[midway, right]{$80$};
             \end{tikzpicture}
          \end{center}
          Pour cela, compléter le code Python suivant :
@@ -470,8 +470,24 @@
          Essayer ce code en choisissant le nombre de maisons que vous voulez.
       \end{enumerate}
 
-   
-\newpage
+   \subsection{Pour finir}\label{subsec:pour-finir}
+      Écrire les lignes suivantes, et les faire tourner :
+      \begin{pyverbatim}
+         t.penup()
+         t.setpos(0, -200)
+         for i in range(0, 361, 5):
+           t.pendown()
+           t.circle(80)
+           t.penup()
+           t.circle(200, i)
+      \end{pyverbatim}
+
+      Que font-elles ?
+      On pourra alors continuer à s'amuser en cherchant à faire tout plein de figures plus extravagantes les unes que les autres.
+
+      Pour faire tourner Python chez soi sur internet : \texttt{https://trinket.io/}
+
+      \newpage
 
 \section{Quelques exercices pour occuper votre temps libre}\label{sec:quelques-exercices-pour-occuper-votre-temps-libre}
    On propose une liste d'exercices de programmation de différentes difficultés, permettant de combler vos éventuelles heures de permanence (ou votre temps libre à la maison).
