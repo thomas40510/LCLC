@@ -1,0 +1,409 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[french]{babel}
+% \usepackage[cache=false]{minted}
+\usepackage{pythontex}
+
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usepackage{tkz-graph}
+
+%load tikz libraries
+\usepackage{tkz-euclide}
+\usepackage{listings}
+\usepackage{graphicx}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc,patterns,shapes.geometric}
+
+
+\usetheme{Boadilla}
+\usecolortheme{beaver}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title %optional
+{L Codent L Créent}
+
+\subtitle{Séance 3}
+
+\author[ENSTA Bretagne] % (optional)
+{C. \textsc{Hinard} \and M. \textsc{Miallier} \and T. \textsc{Prévost}}
+
+\institute[] % (optional)
+{
+  ENSTA Bretagne
+  \and
+  Collège Croas ar Pennoc
+}
+
+\date[Séance 3] % (optional)
+{17 mai 2022}
+
+%\logo{\includegraphics[height=1cm]{overleaf-logo}}
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the
+%beginning of each section and highlights the current section:
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Plan}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\AtBeginSubsection[]
+{
+   \begin{frame}
+      \frametitle{Plan}
+      \tableofcontents[currentsection, currentsubsection]
+   \end{frame}
+}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+
+%---------------------------------------------------------
+%The next statement creates the table of contents.
+\begin{frame}
+\frametitle{Plan}
+\tableofcontents
+\end{frame}
+%---------------------------------------------------------
+
+\section{Rappels}\label{sec:rappels}
+   \subsection{Boucles}\label{subsec:boucles}
+\begin{frame}[fragile]
+   \frametitle{Quelle boucle ?}
+
+   \begin{itemize}
+      \item Je sais combien de fois je dois exécuter la boucle $\implies$ \texttt{for} \pause
+      \begin{pyverbatim}
+   for nombre in range(1,10):
+      print(nombre * 6)
+      \end{pyverbatim}
+      \pause
+      \item Je ne sais pas combien de fois je dois exécuter la boucle $\implies$ \texttt{while} \pause
+      \begin{pyverbatim}
+   while 3 * nombre < 1000:
+      nombre = nombre + 1
+      \end{pyverbatim}
+   \end{itemize}
+\end{frame}
+
+
+   \subsection{Fonctions}\label{subsec:fonctions}
+
+\begin{frame}[fragile]
+   \frametitle{Le triple}
+
+   \begin{pyverbatim}
+         def triple(x):
+            return ...
+   \end{pyverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+   \frametitle{Le triple}
+
+   \begin{pyverbatim}
+         def triple(x):
+            return 3 * x
+   \end{pyverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+   \frametitle{Le triple}
+
+   \begin{pyverbatim}
+         def triple(x):
+            return 3 * x
+         x = triple(3)
+         print(x)
+   \end{pyverbatim}
+\end{frame}
+
+
+\begin{frame}[fragile]
+   \frametitle{Liste des pairs}
+
+   \begin{pyverbatim}
+         def nombres_pairs(liste):
+            liste_pairs = ...
+            for nombre in ...:
+               if ...
+                  liste_pairs.append(...)
+            return liste_pairs
+   \end{pyverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+   \frametitle{Liste des pairs}
+
+   \begin{pyverbatim}
+         def nombres_pairs(liste):
+            liste_pairs = []
+            for nombre in liste:
+               if ...
+                  liste_pairs.append(...)
+            return liste_pairs
+   \end{pyverbatim}
+\end{frame}
+
+
+\begin{frame}[fragile]
+   \frametitle{Liste des pairs}
+
+   \begin{pyverbatim}
+         def nombres_pairs(liste):
+            liste_pairs = []
+            for nombre in liste:
+               if nombre % 2 == 0:
+                  liste_pairs.append(nombre)
+            return liste_pairs
+   \end{pyverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+   \frametitle{Première et dernière lettre}
+
+   \begin{pyverbatim}
+      def premiere_derniere_lettre(mot):
+         premiere = ...
+         derniere = ...
+         return ...
+   \end{pyverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+   \frametitle{Première et dernière lettre}
+
+   \begin{pyverbatim}
+      def premiere_derniere_lettre(mot):
+         premiere = mot[0]
+         derniere = ...
+         return ...
+   \end{pyverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+   \frametitle{Première et dernière lettre}
+
+   \begin{pyverbatim}
+      def premiere_derniere_lettre(mot):
+         premiere = mot[0]
+         derniere = mot[-1]
+         return ...
+   \end{pyverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+   \frametitle{Première et dernière lettre}
+
+   \begin{pyverbatim}
+      def premiere_derniere_lettre(mot):
+         premiere = mot[0]
+         derniere = mot[-1]
+         return premiere + "..." + derniere
+   \end{pyverbatim}
+\end{frame}
+
+
+\section{On dessine !}\label{sec:on-dessine}
+   \subsection{Bonjour \texttt{turtle} !}\label{subsec:bonjour-turtle}
+\begin{frame}
+   \frametitle{Le module \texttt{turtle}}
+
+   \texttt{import turtle as t}
+
+   \begin{center}
+      \includegraphics[scale=.6]{img/franklin}
+   \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+   \frametitle{Création du fichier}
+
+   \begin{pyverbatim}
+      import turtle as t
+
+      t.shape("turtle")
+      t.exitonclick()
+   \end{pyverbatim}
+
+   \begin{block}{Remarque}
+      Sans l'instruction \texttt{import turtle as t}, Python ne sait pas que l'on veut utiliser le module \texttt{turtle}, donc ça ne marchera pas !
+   \end{block}
+\end{frame}
+
+   \subsection{À vous !}\label{subsec:a-vous}
+
+\begin{frame}[fragile]
+   \frametitle{Carré}
+
+   \begin{pyverbatim}
+            def carre(x):
+               t.pendown()
+               for ... in range(4):
+                  t.forward(...)
+                  t.left(...)
+               t.penup()
+   \end{pyverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+   \frametitle{Carré}
+
+   \begin{pyverbatim}
+            def carre(x):
+               t.pendown()
+               for i in range(4):
+                  t.forward(x)
+                  t.left(90)
+               t.penup()
+   \end{pyverbatim}
+\end{frame}
+
+
+\begin{frame}[fragile]
+   \frametitle{La maison}
+
+   \begin{pyverbatim}
+      def maison():
+   \end{pyverbatim}
+   \pause
+   \begin{pyverbatim}
+         # les murs
+         carre(80)
+   \end{pyverbatim}
+   \pause
+   \begin{pyverbatim}
+         # on va à l'emplacement de la porte
+         t.forward(25)
+   \end{pyverbatim}
+   \pause
+   \begin{pyverbatim}
+         # on dessine la porte
+         carre(30)
+   \end{pyverbatim}
+   \pause
+   \begin{pyverbatim}
+         # on va à la position du début du toit
+         t.forward(25)
+         t.left(90)
+         t.forward(80)
+   \end{pyverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+   \frametitle{Maison (suite et fin)}
+
+   \begin{pyverbatim}
+         # on dessine le toit (triangle équilatéral)
+         t.pendown()
+   \end{pyverbatim}
+   \pause
+   \begin{pyverbatim}
+         t.left(30)
+         t.forward(80)
+   \end{pyverbatim}
+   \pause
+   \begin{pyverbatim}
+         t.left(120)
+         t.forward(80)
+   \end{pyverbatim}
+   \pause
+   \begin{pyverbatim}
+         t.penup()
+   \end{pyverbatim}
+   \pause
+   \begin{pyverbatim}
+         t.home()
+   \end{pyverbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+   \frametitle{Le village}
+
+   \begin{pyverbatim}
+      def village(nb_maisons):
+         x, y = 0, 0
+         t.home()
+   \end{pyverbatim}
+   \pause
+   \begin{pyverbatim}
+         for n in range(nb_maisons):
+   \end{pyverbatim}
+   \pause\begin{pyverbatim}
+            maison()
+   \end{pyverbatim}
+   \pause
+   \begin{pyverbatim}
+            x += 90
+   \end{pyverbatim}
+   \pause
+   \begin{pyverbatim}
+            t.setpos(x, 0)
+   \end{pyverbatim}
+   \pause
+   \begin{pyverbatim}
+
+      village(3)
+   \end{pyverbatim}
+\end{frame}
+
+   \subsection{Pour finir}\label{subsec:pour-finir}
+
+\begin{frame}[fragile]
+   \frametitle{Petit dessin pour finir}
+
+   \begin{pyverbatim}
+      t.penup()
+      t.setpos(0,0)
+      for i in range(0, 361, 5):
+         t.pendown()
+         t.circle(80)
+         t.penup()
+         t.circle(200, i)
+   \end{pyverbatim}
+\end{frame}
+%---------------------------------------------------------
+%Highlighting text
+%\begin{frame}
+%\frametitle{Sample frame title}
+%
+%In this slide, some important text will be
+%\alert{highlighted} because it's important.
+%Please, don't abuse it.
+%
+%\begin{block}{Remark}
+%Sample text
+%\end{block}
+%
+%\begin{alertblock}{Important theorem}
+%Sample text in red box
+%\end{alertblock}
+%
+%\begin{examples}
+%Sample text in green box. The title of the block is ``Examples".
+%\end{examples}
+%\end{frame}
+%---------------------------------------------------------
+\end{document}
