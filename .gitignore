@@ -13,3 +13,6 @@
 *.nav
 *.snm
 *.vrb
+*.pyg
+*.pytx*
+*.pkl
